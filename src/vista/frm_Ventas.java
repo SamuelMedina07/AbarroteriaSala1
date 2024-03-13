@@ -71,7 +71,7 @@ public class frm_Ventas extends javax.swing.JDialog {
         txtDescripcion = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -218,9 +218,9 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel3.add(txtStock);
         txtStock.setBounds(520, 100, 110, 30);
 
-        jTextField6.setText("jTextField6");
-        jPanel3.add(jTextField6);
-        jTextField6.setBounds(340, 140, 160, 24);
+        txtFecha.setEditable(false);
+        jPanel3.add(txtFecha);
+        txtFecha.setBounds(340, 140, 160, 24);
         jPanel3.add(txtCantidad);
         txtCantidad.setBounds(170, 140, 140, 26);
 
@@ -354,7 +354,6 @@ public class frm_Ventas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     public javax.swing.JTable tbl_registroFactura;
     public javax.swing.JSpinner txtCantidad;
@@ -362,6 +361,7 @@ public class frm_Ventas extends javax.swing.JDialog {
     public javax.swing.JTextField txtCodigoProducto;
     public javax.swing.JTextField txtCosto;
     public javax.swing.JTextField txtDescripcion;
+    public javax.swing.JTextField txtFecha;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtStock;
     public javax.swing.JTextField txtTotalPagar;

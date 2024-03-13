@@ -7,7 +7,10 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clientes;
@@ -43,6 +46,7 @@ public class VentasControlador implements ActionListener{
         this.form.btnLimpiar.addActionListener(this);
         this.form.btn_buscarProducto.addActionListener(this);
         this.form.btn_AgregarEnTabla.addActionListener(this);
+        fecha();
         
     }
     
@@ -119,6 +123,12 @@ public class VentasControlador implements ActionListener{
      tpagar=tpagar+(cantidad*precio);
     }
     form.txtTotalPagar.setText(""+tpagar);
+    }
+    
+    public void fecha()
+    {
+        java.sql.Date fechaSQL = java.sql.Date.valueOf(LocalDate.now());
+    form.txtFecha.setText(fechaSQL+"");
     }
     
      @Override
