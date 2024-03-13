@@ -24,16 +24,16 @@ public class ConsultaVentas extends Conexion {
     
     public boolean registrarVenta(Ventas venta) {
         Connection con = getConnection();
-        sentenciaSQL = "INSERT INTO tbl_ventas (idVentas, numeroSerie, idCliente, FechaVenta, Monto, Estado) VALUES (?, ?, ?, ?, ?, ?)";
+        sentenciaSQL = "INSERT INTO tbl_ventas (numeroSerie, idCliente, FechaVenta, Monto, Estado) VALUES (?, ?, ?, ?, ?)";
 
         try {
             ps = con.prepareStatement(sentenciaSQL);
-            ps.setInt(1, venta.getId());
-            ps.setString(2, venta.getSerie());
-            ps.setInt(3, venta.getIdCliente());
-            ps.setString(4, venta.getFecha());
-            ps.setDouble(5, venta.getMonto());
-           ps.setString(6, venta.getEstado());
+  
+            ps.setString(1, venta.getSerie());
+            ps.setInt(2, venta.getIdCliente());
+            ps.setString(3, venta.getFecha());
+            ps.setDouble(4, venta.getMonto());
+           ps.setString(5, venta.getEstado());
             
             
             /*
@@ -49,6 +49,8 @@ public class ConsultaVentas extends Conexion {
         } finally {
             closeConnection(con);
         }
+    
+    
     }
     
 //     public void setearFacturaCompleto(ResultSet rs,Ventas venta) throws SQLException {

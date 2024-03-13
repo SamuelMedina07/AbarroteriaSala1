@@ -7,10 +7,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+import java.util.Random;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clientes;
@@ -42,6 +41,7 @@ public class VentasControlador implements ActionListener{
     
     public VentasControlador(Ventas venta,Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos,ConsultaVentas consVentas) {
        
+        this.venta=venta;
         this.cliente = cliente;
         this.producto = producto;
         this.form = form;
@@ -58,7 +58,19 @@ public class VentasControlador implements ActionListener{
     }
     
     public void limpiar(){
-        form.txtCodigo.setText("0");
+        String t="0";
+        form.txtCodigo.setText(t);
+        form.txtNombre.setText(t);
+        form.txtCodigoProducto.setText(t);
+        form.txtDescripcion.setText(t);
+        form.txtCosto.setText(t);
+        form.txtStock.setText(t);
+        form.txt_NumeroSerie.setText(t);
+      //  form.txtCantidad.setValue(t);
+        form.txtFecha.setText(t);
+        form.txtImpuesto.setText(t);
+        form.txtTotalPagar.setText(t);
+        
         
         /*
         int fila = form.tbl_registrosClientes.getRowCount();
@@ -118,6 +130,7 @@ public class VentasControlador implements ActionListener{
 
     }
     
+ 
     public void calcularTotal()
     {
     double tpagar;
@@ -186,8 +199,11 @@ public class VentasControlador implements ActionListener{
           
           //boton generar venta
            if(e.getSource()==form.btn_GenerarVenta){
+               
+               
+        
            
-            venta.setId(Integer.parseInt(form.txtCodigo.getText())); // arreglar por que lo puse repetido
+           // venta.setId(Integer.parseInt(form.txtCodigo.getText())); // arreglar por que lo puse repetido
             venta.setSerie(form.txt_NumeroSerie.getText());
             venta.setIdCliente(Integer.parseInt(form.txtCodigo.getText())); 
             venta.setFecha(form.txtFecha.getText());

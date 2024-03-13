@@ -6,6 +6,7 @@
 package vista;
 
 import java.awt.Image;
+import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -23,6 +24,12 @@ public class frm_Ventas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         cambiarImagenes("fondoP (Custom).png", "fondoP (Custom).png","fondoP (Custom).png");
+        Random random = new Random();
+
+        // Generar un número aleatorio de 8 dígitos
+        long numeroAleatorio = 10000000L + random.nextInt(90000000);
+        
+        txt_NumeroSerie.setText(""+numeroAleatorio);
         
     }
 
@@ -264,7 +271,6 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 50));
 
         txt_NumeroSerie.setEditable(false);
-        txt_NumeroSerie.setText("667");
         jPanel2.add(txt_NumeroSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 240, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 650, 130));
