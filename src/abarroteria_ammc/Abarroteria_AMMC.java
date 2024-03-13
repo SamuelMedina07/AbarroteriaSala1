@@ -16,6 +16,7 @@ import modelo.ConsultaBD;
 import modelo.ConsultaInventario;
 import modelo.ConsultaProductos;
 import modelo.ConsultaProveedores;
+import modelo.ConsultaVentas;
 import modelo.Inventario;
 import modelo.Productos;
 import modelo.Proveedores;
@@ -76,9 +77,10 @@ public class Abarroteria_AMMC {
         
         //Factura
         
-//         Ventas vent = new Ventas();//objeto
+       Ventas venta = new Ventas();//objeto
+        ConsultaVentas consVentas = new ConsultaVentas();
         frm_Ventas frmventas = new frm_Ventas(frm_pri, true);//formulario de c lientes, jdialog el primer parametro necesita la clase padre
-        VentasControlador contVent = new VentasControlador(cliente, frmventas,con,producto,consProducto);//clase controlador
+        VentasControlador contVent = new VentasControlador(venta,cliente, frmventas,con,producto,consProducto,consVentas);//clase controlador
         
         
         PrincipalControlador contPri = new PrincipalControlador(frm_pri, frmClie, frmProveedor,frmProducto,frmINventario,frmventas);

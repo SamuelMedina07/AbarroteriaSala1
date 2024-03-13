@@ -52,9 +52,11 @@ public class frm_Ventas extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_registroFactura = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        txtImpuesto = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtTotalPagar = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btn_GenerarVenta = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -79,7 +81,7 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txt_NumeroSerie = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -103,24 +105,31 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel4.setLayout(null);
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jLabel10.setText("IMPUESTO 15%");
+        jPanel4.add(jLabel10);
+        jLabel10.setBounds(280, 20, 90, 16);
+
+        txtImpuesto.setEditable(false);
+        jPanel4.add(txtImpuesto);
+        txtImpuesto.setBounds(370, 10, 130, 40);
+
         jLabel5.setText("TOTAL A PAGAR");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(400, 10, 180, 26);
+        jLabel5.setBounds(510, 20, 110, 16);
 
         txtTotalPagar.setEditable(false);
         jPanel4.add(txtTotalPagar);
-        txtTotalPagar.setBounds(590, 10, 170, 40);
+        txtTotalPagar.setBounds(630, 10, 130, 40);
 
-        jButton2.setText("GENERAR VENTA");
-        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel4.add(jButton2);
-        jButton2.setBounds(200, 10, 150, 40);
+        btn_GenerarVenta.setText("GENERAR VENTA");
+        btn_GenerarVenta.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel4.add(btn_GenerarVenta);
+        btn_GenerarVenta.setBounds(150, 10, 120, 40);
 
         btnLimpiar.setText("CANCELAR");
         btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel4.add(btnLimpiar);
-        btnLimpiar.setBounds(30, 10, 150, 40);
+        btnLimpiar.setBounds(30, 10, 110, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/fondoP (Custom).png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -254,8 +263,8 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel3.setText("SISTEMA DE FACTURACIÓN");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 50));
 
-        jTextField7.setEditable(false);
-        jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 240, 30));
+        txt_NumeroSerie.setEditable(false);
+        jPanel2.add(txt_NumeroSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 240, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 650, 130));
 
@@ -335,10 +344,11 @@ public class frm_Ventas extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btn_AgregarEnTabla;
+    public javax.swing.JButton btn_GenerarVenta;
     public javax.swing.JButton btn_buscarCodigo;
     public javax.swing.JButton btn_buscarProducto;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -354,7 +364,6 @@ public class frm_Ventas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField7;
     public javax.swing.JTable tbl_registroFactura;
     public javax.swing.JSpinner txtCantidad;
     public javax.swing.JTextField txtCodigo;
@@ -362,8 +371,10 @@ public class frm_Ventas extends javax.swing.JDialog {
     public javax.swing.JTextField txtCosto;
     public javax.swing.JTextField txtDescripcion;
     public javax.swing.JTextField txtFecha;
+    public javax.swing.JTextField txtImpuesto;
     public javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtStock;
     public javax.swing.JTextField txtTotalPagar;
+    public javax.swing.JTextField txt_NumeroSerie;
     // End of variables declaration//GEN-END:variables
 }

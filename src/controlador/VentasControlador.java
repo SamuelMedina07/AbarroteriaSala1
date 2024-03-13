@@ -16,7 +16,9 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Clientes;
 import modelo.ConsultaBD;
 import modelo.ConsultaProductos;
+import modelo.ConsultaVentas;
 import modelo.Productos;
+import modelo.Ventas;
 import vista.frm_Ventas;
 
 /**
@@ -32,20 +34,24 @@ public class VentasControlador implements ActionListener{
     
      private Productos producto;
      private ConsultaProductos consProductos;
+     private Ventas venta;
+     private ConsultaVentas consVentas;
       double precio;
         int cantidad;
     
-    public VentasControlador(Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos) {
+    public VentasControlador(Ventas venta,Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos,ConsultaVentas consVentas) {
        
         this.cliente = cliente;
         this.producto = producto;
         this.form = form;
         this.conDB = conDB;
         this.consProductos = consProductos;
+        this.consVentas= consVentas;
         this.form.btn_buscarCodigo.addActionListener(this);
         this.form.btnLimpiar.addActionListener(this);
         this.form.btn_buscarProducto.addActionListener(this);
         this.form.btn_AgregarEnTabla.addActionListener(this);
+        this.form.btn_GenerarVenta.addActionListener(this);
         fecha();
         
     }
@@ -115,13 +121,20 @@ public class VentasControlador implements ActionListener{
     {
     double tpagar;
     tpagar=0;
+    double impuesto;
+    impuesto=0;
+    double subtotal;
+    subtotal=0;
     
     for(int i=0;i<form.tbl_registroFactura.getRowCount();i++)
     {
     cantidad=(int) Double.parseDouble(form.tbl_registroFactura.getValueAt(i,3).toString());
      precio=(int) Double.parseDouble(form.tbl_registroFactura.getValueAt(i,4).toString());
-     tpagar=tpagar+(cantidad*precio);
+    subtotal=subtotal+(cantidad*precio);
+     impuesto=impuesto+(subtotal*0.15);
+     tpagar=tpagar+(subtotal+impuesto);
     }
+    form.txtImpuesto.setText(""+impuesto);
     form.txtTotalPagar.setText(""+tpagar);
     }
     
@@ -168,6 +181,29 @@ public class VentasControlador implements ActionListener{
         
           if(e.getSource()==form.btn_AgregarEnTabla){
            agregarproducto();
+        }
+          
+          //boton generar venta
+           if(e.getSource()==form.btn_GenerarVenta){
+           
+             int v=1;
+            venta.setId(v); // arreglar por que lo puse repetido
+            venta.setSerie(form.txt_NumeroSerie.getText());
+            venta.setIdCliente(Integer.parseInt(form.txtCodigo.getText())); 
+            venta.setFecha(form.txtFecha.getText());
+            venta.setMonto(Double.parseDouble(form.txtTotalPagar.getText()));
+            venta.setEstado("Aprobado");
+            
+            
+            if(consVentas.registrarMovimiento(venta)){
+                JOptionPane.showMessageDialog(null, "FACTURA CREADO");
+                limpiar();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "FACTURA NO APROBADA");
+            }
+                  
+        
         }
        
         //boton eliminar

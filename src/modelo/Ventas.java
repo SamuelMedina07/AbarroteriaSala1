@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.sql.Date;
+
 /**
  *
  * @author Samuel
@@ -17,14 +19,14 @@ public class Ventas {
     double monto;
     String estado;
     
-     public Ventas(int id, int idCliente, String Serie, String Fecha, double monto, String estado) {
-        this.id = id;
-        this.idCliente = idCliente;
-        this.Serie = Serie;
-        this.Fecha = Fecha;
-        this.monto = monto;
-        this.estado = estado;
-    }
+//    public Ventas(int id, int idCliente, String Serie, String Fecha, double monto, String estado) {
+//        this.id = id;
+//        this.idCliente = idCliente;
+//        this.Serie = Serie;
+//        this.Fecha = Fecha;
+//        this.monto = monto;
+//        this.estado = estado;
+//    }
 
 
     public int getId() {
