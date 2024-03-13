@@ -9,6 +9,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+
 /**
  *
  * @author Samuel
@@ -52,12 +53,12 @@ public class frm_Ventas extends javax.swing.JDialog {
         tbl_registroFactura = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTotalPagar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btn_AgregarEnTabla = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtCosto = new javax.swing.JTextField();
         btn_buscarProducto = new javax.swing.JButton();
@@ -65,14 +66,13 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         btn_buscarCodigo = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        txtCantidad = new javax.swing.JSpinner();
         jLabel11 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -107,8 +107,10 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel5.setText("TOTAL A PAGAR");
         jPanel4.add(jLabel5);
         jLabel5.setBounds(400, 10, 180, 26);
-        jPanel4.add(jTextField1);
-        jTextField1.setBounds(590, 10, 170, 40);
+
+        txtTotalPagar.setEditable(false);
+        jPanel4.add(txtTotalPagar);
+        txtTotalPagar.setBounds(590, 10, 170, 40);
 
         jButton2.setText("GENERAR VENTA");
         jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -130,15 +132,21 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(255, 255, 204));
         jPanel3.setLayout(null);
 
-        jButton3.setText("AGREGAR");
-        jPanel3.add(jButton3);
-        jButton3.setBounds(310, 100, 90, 32);
+        btn_AgregarEnTabla.setText("AGREGAR");
+        btn_AgregarEnTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarEnTablaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_AgregarEnTabla);
+        btn_AgregarEnTabla.setBounds(310, 100, 90, 32);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel8.setText("CANTIDAD PRODUCTO");
         jPanel3.add(jLabel8);
         jLabel8.setBounds(30, 150, 160, 14);
 
+        txtCosto.setEditable(false);
         txtCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCostoActionPerformed(evt);
@@ -181,8 +189,6 @@ public class frm_Ventas extends javax.swing.JDialog {
         });
         jPanel3.add(txtCodigo);
         txtCodigo.setBounds(170, 20, 130, 24);
-        jPanel3.add(jTextField2);
-        jTextField2.setBounds(170, 140, 130, 24);
 
         txtNombre.setEditable(false);
         jPanel3.add(txtNombre);
@@ -202,20 +208,21 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel3.add(jLabel13);
         jLabel13.setBounds(430, 110, 80, 14);
 
-        jTextField5.setEditable(false);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtStock.setEditable(false);
+        txtStock.setText("45");
+        txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtStockActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField5);
-        jTextField5.setBounds(520, 100, 110, 30);
+        jPanel3.add(txtStock);
+        txtStock.setBounds(520, 100, 110, 30);
 
         jTextField6.setText("jTextField6");
         jPanel3.add(jTextField6);
-        jTextField6.setBounds(370, 140, 160, 24);
-        jPanel3.add(jSpinner1);
-        jSpinner1.setBounds(310, 140, 50, 26);
+        jTextField6.setBounds(340, 140, 160, 24);
+        jPanel3.add(txtCantidad);
+        txtCantidad.setBounds(170, 140, 140, 26);
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel11.setText("CLIENTE");
@@ -246,6 +253,8 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("SISTEMA DE FACTURACIÓN");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 50));
+
+        jTextField7.setEditable(false);
         jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 240, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 650, 130));
@@ -269,10 +278,18 @@ public class frm_Ventas extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodigoActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtStockActionPerformed
 
+    private void btn_AgregarEnTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarEnTablaActionPerformed
+        // TODO add your handling code here:
+        
+      
+        
+    }//GEN-LAST:event_btn_AgregarEnTablaActionPerformed
+
+  
     /**
      * @param args the command line arguments
      */
@@ -317,10 +334,10 @@ public class frm_Ventas extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnLimpiar;
+    public javax.swing.JButton btn_AgregarEnTabla;
     public javax.swing.JButton btn_buscarCodigo;
     public javax.swing.JButton btn_buscarProducto;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -337,17 +354,16 @@ public class frm_Ventas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    public javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     public javax.swing.JTable tbl_registroFactura;
+    public javax.swing.JSpinner txtCantidad;
     public javax.swing.JTextField txtCodigo;
     public javax.swing.JTextField txtCodigoProducto;
     public javax.swing.JTextField txtCosto;
     public javax.swing.JTextField txtDescripcion;
     public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtStock;
+    public javax.swing.JTextField txtTotalPagar;
     // End of variables declaration//GEN-END:variables
 }

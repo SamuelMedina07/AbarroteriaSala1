@@ -7,6 +7,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clientes;
@@ -28,6 +29,8 @@ public class VentasControlador implements ActionListener{
     
      private Productos producto;
      private ConsultaProductos consProductos;
+      double precio;
+        int cantidad;
     
     public VentasControlador(Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos) {
        
@@ -39,6 +42,7 @@ public class VentasControlador implements ActionListener{
         this.form.btn_buscarCodigo.addActionListener(this);
         this.form.btnLimpiar.addActionListener(this);
         this.form.btn_buscarProducto.addActionListener(this);
+        this.form.btn_AgregarEnTabla.addActionListener(this);
         
     }
     
@@ -53,6 +57,68 @@ public class VentasControlador implements ActionListener{
     }
          */
         modelo.setRowCount(0);
+    }
+    
+    public void agregarproducto()
+    {
+        int item=0;
+        item=item+1;
+        int idp;
+        String descripcionproducto;
+       
+        int stock;
+    double total;
+    
+    modelo =(DefaultTableModel)form.tbl_registroFactura.getModel();
+    
+    
+    idp= Integer.parseInt(form.txtCodigoProducto.getText());
+    descripcionproducto= form.txtDescripcion.getText();
+    precio = Double.parseDouble(form.txtCosto.getText());
+    cantidad = Integer.parseInt(form.txtCantidad.getValue().toString());
+    stock=Integer.parseInt(form.txtStock.getText());
+    total=precio*cantidad;
+    
+    ArrayList lista = new ArrayList();
+    if(stock > 0)
+    {
+    lista.add(item);
+    lista.add(idp);
+    lista.add(descripcionproducto);
+    lista.add(cantidad);
+    lista.add(precio);
+    lista.add(total);
+    Object[] ob = new Object[6];
+    ob[0]=lista.get(0);
+    ob[1]=lista.get(1);
+    ob[2]=lista.get(2);
+    ob[3]=lista.get(3);
+    ob[4]=lista.get(4);
+    ob[5]=lista.get(5);
+    modelo.addRow(ob);
+    form.tbl_registroFactura.setModel(modelo);
+    calcularTotal();
+            }
+    else 
+    {
+    JOptionPane.showMessageDialog(null,"PRODUCTO NO DISPONIBLE EN STOCK");
+    }
+    
+
+    }
+    
+    public void calcularTotal()
+    {
+    double tpagar;
+    tpagar=0;
+    
+    for(int i=0;i<form.tbl_registroFactura.getRowCount();i++)
+    {
+    cantidad=(int) Double.parseDouble(form.tbl_registroFactura.getValueAt(i,3).toString());
+     precio=(int) Double.parseDouble(form.tbl_registroFactura.getValueAt(i,4).toString());
+     tpagar=tpagar+(cantidad*precio);
+    }
+    form.txtTotalPagar.setText(""+tpagar);
     }
     
      @Override
@@ -88,6 +154,10 @@ public class VentasControlador implements ActionListener{
            }else{
                JOptionPane.showMessageDialog(null, "Producto no encontrado");
            }
+        }
+        
+          if(e.getSource()==form.btn_AgregarEnTabla){
+           agregarproducto();
         }
        
         //boton eliminar
