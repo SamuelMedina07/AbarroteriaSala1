@@ -14,8 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clientes;
 import modelo.ConsultaBD;
+import modelo.ConsultaInventario;
 import modelo.ConsultaProductos;
 import modelo.ConsultaVentas;
+import modelo.Inventario;
 import modelo.Productos;
 import modelo.Ventas;
 import vista.frm_Ventas;
@@ -35,19 +37,23 @@ public class VentasControlador implements ActionListener{
      private ConsultaProductos consProductos;
      private Ventas venta;
      private ConsultaVentas consVentas;
+     private ConsultaInventario consInventario;
+     private Inventario inventario;
       double precio;
         int cantidad;
         int v=1;
     
-    public VentasControlador(Ventas venta,Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos,ConsultaVentas consVentas) {
+    public VentasControlador(Ventas venta,Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos,ConsultaVentas consVentas,Inventario inventario) {
        
         this.venta=venta;
         this.cliente = cliente;
         this.producto = producto;
+        this.inventario = inventario;
         this.form = form;
         this.conDB = conDB;
         this.consProductos = consProductos;
         this.consVentas= consVentas;
+        this.consInventario = consInventario;
         this.form.btn_buscarCodigo.addActionListener(this);
         this.form.btnLimpiar.addActionListener(this);
         this.form.btn_buscarProducto.addActionListener(this);
@@ -66,7 +72,7 @@ public class VentasControlador implements ActionListener{
         form.txtCosto.setText(t);
         form.txtStock.setText(t);
         form.txt_NumeroSerie.setText(t);
-      //  form.txtCantidad.setValue(t);
+         form.txtCantidad.setValue(0);
         form.txtFecha.setText(t);
         form.txtImpuesto.setText(t);
         form.txtTotalPagar.setText(t);
@@ -184,7 +190,9 @@ public class VentasControlador implements ActionListener{
            if(consProductos.buscarProducto(producto)){
                JOptionPane.showMessageDialog(null, "Producto Encontrado");
                form.txtDescripcion.setText(producto.getDescripcion());
-               form.txtCosto.setText(String.valueOf(producto.getCosto()));
+               form.txtCosto.setText(String.valueOf(producto.getPrecioVenta()));
+               form.txtStock.setText(String.valueOf(inventario.getCantidad()));
+               
                
                
          

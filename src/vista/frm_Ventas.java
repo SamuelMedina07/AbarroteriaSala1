@@ -225,7 +225,6 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel13.setBounds(430, 110, 80, 14);
 
         txtStock.setEditable(false);
-        txtStock.setText("45");
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
