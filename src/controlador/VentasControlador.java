@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Clientes;
 import modelo.ConsultaBD;
+import modelo.ConsultaProductos;
+import modelo.Productos;
 import vista.frm_Ventas;
 
 /**
@@ -24,13 +26,19 @@ public class VentasControlador implements ActionListener{
     private Object datos[] = new Object[4];
     DefaultTableModel modelo;
     
-    public VentasControlador(Clientes cliente, frm_Ventas form, ConsultaBD conDB) {
+     private Productos producto;
+     private ConsultaProductos consProductos;
+    
+    public VentasControlador(Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos) {
        
         this.cliente = cliente;
+        this.producto = producto;
         this.form = form;
         this.conDB = conDB;
+        this.consProductos = consProductos;
         this.form.btn_buscarCodigo.addActionListener(this);
         this.form.btnLimpiar.addActionListener(this);
+        this.form.btn_buscarProducto.addActionListener(this);
         
     }
     
@@ -52,7 +60,7 @@ public class VentasControlador implements ActionListener{
       
         //BOTON LEER TODOS
         
-         //BOTON BUSCAR CODIGO
+         //BOTON BUSCAR CODIGO CLIENTE
         if(e.getSource()==form.btn_buscarCodigo){
             
            cliente.setCodigo(Integer.parseInt(form.txtCodigo.getText()));
@@ -62,6 +70,23 @@ public class VentasControlador implements ActionListener{
          
            }else{
                JOptionPane.showMessageDialog(null, "Cliente no encontrado");
+           }
+        }
+        
+        //BOTON BUSCAR CODIGO PRODUCTO
+        if(e.getSource()==form.btn_buscarProducto){
+            
+            
+           producto.setIdProducto(Integer.parseInt(form.txtCodigoProducto.getText()));
+           if(consProductos.buscarProducto(producto)){
+               JOptionPane.showMessageDialog(null, "Producto Encontrado");
+               form.txtDescripcion.setText(producto.getDescripcion());
+               form.txtCosto.setText(String.valueOf(producto.getCosto()));
+               
+               
+         
+           }else{
+               JOptionPane.showMessageDialog(null, "Producto no encontrado");
            }
         }
        

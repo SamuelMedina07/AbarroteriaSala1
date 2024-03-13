@@ -59,16 +59,16 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        txtCodigo2 = new javax.swing.JTextField();
-        btn_buscarCodigo1 = new javax.swing.JButton();
-        txtCodigo1 = new javax.swing.JTextField();
+        txtCosto = new javax.swing.JTextField();
+        btn_buscarProducto = new javax.swing.JButton();
+        txtCodigoProducto = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btn_buscarCodigo = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
@@ -83,7 +83,6 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(515, 420));
         setMinimumSize(new java.awt.Dimension(515, 420));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -140,28 +139,28 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel3.add(jLabel8);
         jLabel8.setBounds(30, 150, 160, 14);
 
-        txtCodigo2.addActionListener(new java.awt.event.ActionListener() {
+        txtCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigo2ActionPerformed(evt);
+                txtCostoActionPerformed(evt);
             }
         });
-        jPanel3.add(txtCodigo2);
-        txtCodigo2.setBounds(170, 100, 130, 24);
+        jPanel3.add(txtCosto);
+        txtCosto.setBounds(170, 100, 130, 24);
 
-        btn_buscarCodigo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/search-9-16.png"))); // NOI18N
-        btn_buscarCodigo1.setBorder(null);
-        btn_buscarCodigo1.setBorderPainted(false);
-        btn_buscarCodigo1.setContentAreaFilled(false);
-        jPanel3.add(btn_buscarCodigo1);
-        btn_buscarCodigo1.setBounds(320, 60, 16, 16);
+        btn_buscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/search-9-16.png"))); // NOI18N
+        btn_buscarProducto.setBorder(null);
+        btn_buscarProducto.setBorderPainted(false);
+        btn_buscarProducto.setContentAreaFilled(false);
+        jPanel3.add(btn_buscarProducto);
+        btn_buscarProducto.setBounds(320, 60, 16, 16);
 
-        txtCodigo1.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigo1ActionPerformed(evt);
+                txtCodigoProductoActionPerformed(evt);
             }
         });
-        jPanel3.add(txtCodigo1);
-        txtCodigo1.setBounds(170, 60, 130, 24);
+        jPanel3.add(txtCodigoProducto);
+        txtCodigoProducto.setBounds(170, 60, 130, 24);
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel7.setText("CODIGO PRODUCTO");
@@ -184,6 +183,8 @@ public class frm_Ventas extends javax.swing.JDialog {
         txtCodigo.setBounds(170, 20, 130, 24);
         jPanel3.add(jTextField2);
         jTextField2.setBounds(170, 140, 130, 24);
+
+        txtNombre.setEditable(false);
         jPanel3.add(txtNombre);
         txtNombre.setBounds(520, 24, 230, 30);
 
@@ -191,14 +192,17 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel12.setText("PRODUCTO");
         jPanel3.add(jLabel12);
         jLabel12.setBounds(430, 70, 80, 14);
-        jPanel3.add(jTextField4);
-        jTextField4.setBounds(520, 60, 230, 30);
+
+        txtDescripcion.setEditable(false);
+        jPanel3.add(txtDescripcion);
+        txtDescripcion.setBounds(520, 60, 230, 30);
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel13.setText("STOCK");
         jPanel3.add(jLabel13);
         jLabel13.setBounds(430, 110, 80, 14);
 
+        jTextField5.setEditable(false);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -242,8 +246,6 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("SISTEMA DE FACTURACIÓN");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 50));
-
-        jTextField7.setText("jTextField7");
         jPanel2.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 240, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 650, 130));
@@ -255,13 +257,13 @@ public class frm_Ventas extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodigo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigo2ActionPerformed
+    private void txtCostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCostoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigo2ActionPerformed
+    }//GEN-LAST:event_txtCostoActionPerformed
 
-    private void txtCodigo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigo1ActionPerformed
+    private void txtCodigoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigo1ActionPerformed
+    }//GEN-LAST:event_txtCodigoProductoActionPerformed
 
     private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
@@ -316,7 +318,7 @@ public class frm_Ventas extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnLimpiar;
     public javax.swing.JButton btn_buscarCodigo;
-    public javax.swing.JButton btn_buscarCodigo1;
+    public javax.swing.JButton btn_buscarProducto;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -338,14 +340,14 @@ public class frm_Ventas extends javax.swing.JDialog {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    public javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     public javax.swing.JTable tbl_registroFactura;
     public javax.swing.JTextField txtCodigo;
-    public javax.swing.JTextField txtCodigo1;
-    public javax.swing.JTextField txtCodigo2;
+    public javax.swing.JTextField txtCodigoProducto;
+    public javax.swing.JTextField txtCosto;
+    public javax.swing.JTextField txtDescripcion;
     public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
