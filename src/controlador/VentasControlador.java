@@ -144,7 +144,7 @@ public class VentasControlador implements ActionListener{
     {
     cantidad=(int) Double.parseDouble(form.tbl_registroFactura.getValueAt(i,3).toString());
      precio=(int) Double.parseDouble(form.tbl_registroFactura.getValueAt(i,4).toString());
-    subtotal=subtotal+(cantidad*precio);
+    subtotal=(cantidad*precio);
      impuesto=impuesto+(subtotal*0.15);
      tpagar=tpagar+(subtotal+impuesto);
     }
