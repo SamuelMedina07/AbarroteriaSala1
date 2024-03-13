@@ -22,7 +22,7 @@ public class ConsultaVentas extends Conexion {
     ResultSet rs;
     Ventas venta;
     
-    public boolean registrarMovimiento(Ventas venta) {
+    public boolean registrarVenta(Ventas venta) {
         Connection con = getConnection();
         sentenciaSQL = "INSERT INTO tbl_ventas (idVentas, numeroSerie, idCliente, FechaVenta, Monto, Estado) VALUES (?, ?, ?, ?, ?, ?)";
 

@@ -38,6 +38,7 @@ public class VentasControlador implements ActionListener{
      private ConsultaVentas consVentas;
       double precio;
         int cantidad;
+        int v=1;
     
     public VentasControlador(Ventas venta,Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos,ConsultaVentas consVentas) {
        
@@ -186,8 +187,7 @@ public class VentasControlador implements ActionListener{
           //boton generar venta
            if(e.getSource()==form.btn_GenerarVenta){
            
-             int v=1;
-            venta.setId(v); // arreglar por que lo puse repetido
+            venta.setId(Integer.parseInt(form.txtCodigo.getText())); // arreglar por que lo puse repetido
             venta.setSerie(form.txt_NumeroSerie.getText());
             venta.setIdCliente(Integer.parseInt(form.txtCodigo.getText())); 
             venta.setFecha(form.txtFecha.getText());
@@ -195,7 +195,7 @@ public class VentasControlador implements ActionListener{
             venta.setEstado("Aprobado");
             
             
-            if(consVentas.registrarMovimiento(venta)){
+            if(consVentas.registrarVenta(venta)){
                 JOptionPane.showMessageDialog(null, "FACTURA CREADO");
                 limpiar();
             }

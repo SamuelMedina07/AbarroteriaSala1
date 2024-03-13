@@ -264,6 +264,7 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, 50));
 
         txt_NumeroSerie.setEditable(false);
+        txt_NumeroSerie.setText("667");
         jPanel2.add(txt_NumeroSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 240, 30));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 650, 130));
