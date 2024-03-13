@@ -24,11 +24,11 @@ public class VentasControlador implements ActionListener{
     private Object datos[] = new Object[4];
     DefaultTableModel modelo;
     
-    public VentasControlador(Clientes cliente, frm_Ventas form) {
-       // , ConsultaBD conDB
+    public VentasControlador(Clientes cliente, frm_Ventas form, ConsultaBD conDB) {
+       
         this.cliente = cliente;
         this.form = form;
-       // this.conDB = conDB;
+        this.conDB = conDB;
         this.form.btn_buscarCodigo.addActionListener(this);
         this.form.btnLimpiar.addActionListener(this);
         
