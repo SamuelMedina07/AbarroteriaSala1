@@ -80,7 +80,7 @@ public class Abarroteria_AMMC {
        Ventas venta = new Ventas();//objeto
         ConsultaVentas consVentas = new ConsultaVentas();
         frm_Ventas frmventas = new frm_Ventas(frm_pri, true);//formulario de c lientes, jdialog el primer parametro necesita la clase padre
-        VentasControlador contVent = new VentasControlador(venta,cliente, frmventas,con,producto,consProducto,consVentas,inventario);//clase controlador
+        VentasControlador contVent = new VentasControlador(venta,cliente, frmventas,con,producto,consProducto,consVentas,inventario,consInventario);//clase controlador
         
         
         PrincipalControlador contPri = new PrincipalControlador(frm_pri, frmClie, frmProveedor,frmProducto,frmINventario,frmventas);

@@ -43,7 +43,7 @@ public class VentasControlador implements ActionListener{
         int cantidad;
         int v=1;
     
-    public VentasControlador(Ventas venta,Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos,ConsultaVentas consVentas,Inventario inventario) {
+    public VentasControlador(Ventas venta,Clientes cliente, frm_Ventas form, ConsultaBD conDB,Productos producto,ConsultaProductos consProductos,ConsultaVentas consVentas,Inventario inventario, ConsultaInventario consInventario) {
        
         this.venta=venta;
         this.cliente = cliente;
@@ -55,7 +55,7 @@ public class VentasControlador implements ActionListener{
         this.consVentas= consVentas;
         this.consInventario = consInventario;
         this.form.btn_buscarCodigo.addActionListener(this);
-        this.form.btnLimpiar.addActionListener(this);
+        this.form.btnSalir.addActionListener(this);
         this.form.btn_buscarProducto.addActionListener(this);
         this.form.btn_AgregarEnTabla.addActionListener(this);
         this.form.btn_GenerarVenta.addActionListener(this);
@@ -151,7 +151,7 @@ public class VentasControlador implements ActionListener{
     cantidad=(int) Double.parseDouble(form.tbl_registroFactura.getValueAt(i,3).toString());
      precio=(int) Double.parseDouble(form.tbl_registroFactura.getValueAt(i,4).toString());
     subtotal=(cantidad*precio);
-     impuesto=impuesto+(subtotal*0.15);
+     impuesto=impuesto+(subtotal*0.18);
      tpagar=tpagar+(subtotal+impuesto);
     }
     form.txtImpuesto.setText(""+impuesto);
@@ -185,13 +185,15 @@ public class VentasControlador implements ActionListener{
         //BOTON BUSCAR CODIGO PRODUCTO
         if(e.getSource()==form.btn_buscarProducto){
             
-            
+           
            producto.setIdProducto(Integer.parseInt(form.txtCodigoProducto.getText()));
+           
            if(consProductos.buscarProducto(producto)){
                JOptionPane.showMessageDialog(null, "Producto Encontrado");
                form.txtDescripcion.setText(producto.getDescripcion());
                form.txtCosto.setText(String.valueOf(producto.getPrecioVenta()));
-               form.txtStock.setText(String.valueOf(inventario.getCantidad()));
+               form.txtStock.setText(10+"");
+               
                
                
                
@@ -221,7 +223,7 @@ public class VentasControlador implements ActionListener{
             
             if(consVentas.registrarVenta(venta)){
                 JOptionPane.showMessageDialog(null, "FACTURA CREADO");
-                limpiar();
+                
             }
             else{
                 JOptionPane.showMessageDialog(null, "FACTURA NO APROBADA");
@@ -232,13 +234,13 @@ public class VentasControlador implements ActionListener{
        
         //boton eliminar
         
-        if(e.getSource()==form.btnLimpiar){
+        if(e.getSource()==form.btnSalir){
            limpiar();
         }
         
-       // if(e.getSource()==form.btnSalir){
-         //  this.form.dispose();
-        //}
+        if(e.getSource()==form.btnSalir){
+           this.form.dispose();
+        }
     }
     
 }

@@ -64,7 +64,7 @@ public class frm_Ventas extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         txtTotalPagar = new javax.swing.JTextField();
         btn_GenerarVenta = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btn_AgregarEnTabla = new javax.swing.JButton();
@@ -112,7 +112,7 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel4.setLayout(null);
 
-        jLabel10.setText("IMPUESTO 15%");
+        jLabel10.setText("IMPUESTO 18%");
         jPanel4.add(jLabel10);
         jLabel10.setBounds(280, 20, 90, 16);
 
@@ -133,10 +133,10 @@ public class frm_Ventas extends javax.swing.JDialog {
         jPanel4.add(btn_GenerarVenta);
         btn_GenerarVenta.setBounds(150, 10, 120, 40);
 
-        btnLimpiar.setText("CANCELAR");
-        btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel4.add(btnLimpiar);
-        btnLimpiar.setBounds(30, 10, 110, 40);
+        btnSalir.setText("CANCELAR");
+        btnSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jPanel4.add(btnSalir);
+        btnSalir.setBounds(30, 10, 110, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/fondoP (Custom).png"))); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -348,7 +348,7 @@ public class frm_Ventas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JButton btnSalir;
     public javax.swing.JButton btn_AgregarEnTabla;
     public javax.swing.JButton btn_GenerarVenta;
     public javax.swing.JButton btn_buscarCodigo;
