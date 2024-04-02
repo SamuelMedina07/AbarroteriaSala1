@@ -1,0 +1,61 @@
+ String nombre, sentenciaSQL;
+    Connection con = null;
+    Conexion conecta;
+
+  public void conectarBD() {
+        conecta = new Conexion();
+        con = conecta.getConnection();
+    }
+     
+     public void llamarReportes(String nombre)
+     {
+        try {
+            conectarBD();
+            //RUTA DEL ARCHIVO
+            URL urlMaestro=getClass().getResource(nombre);
+            //LLAMADO DEL ARCHIVO
+            JasperReport reporte =(JasperReport) JRLoader.loadObject(urlMaestro);
+            //LLENAMOS EL REPORTE
+            JasperPrint jprint=JasperFillManager.fillReport(reporte, null,con);
+            //VISTA DEL REPORTE
+            JasperViewer view= new JasperViewer(jprint,false);
+            //TITULO OPCIONAL
+            view.setTitle("REPORTE DE JOYERIA AMBER");
+            //CIERRE DEL REPORTE
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+            con.close();
+        } catch (JRException ex) {
+            System.out.print(ex.getMessage());
+        } catch (SQLException ex) {
+           System.out.print(ex.getMessage());
+        }
+     }
+     
+     public void llamarReportePorNombreCliente()
+     {
+         nombre=JOptionPane.showInputDialog("INGRESE EL NOMBRE DEL CLIENTE PARA LA BUSQUEDA");
+        try {
+            conectarBD();
+            Map parametro = new HashMap();
+            parametro.put("nombreC", nombre);
+            //RUTA DEL ARCHIVO
+            URL urlMaestro=getClass().getResource("reporteConParametro.jasper");
+            //LLAMADO DEL ARCHIVO
+            JasperReport reporte =(JasperReport) JRLoader.loadObject(urlMaestro);
+            //LLENAMOS EL REPORTE
+            JasperPrint jprint=JasperFillManager.fillReport(reporte, parametro,con);
+            //VISTA DEL REPORTE
+            JasperViewer view= new JasperViewer(jprint,false);
+            //TITULO OPCIONAL
+            view.setTitle("REPORTE DE JOYERIA AMBER");
+            //CIERRE DEL REPORTE
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+            con.close();
+        } catch (JRException ex) {
+            System.out.print(ex.getMessage());
+        } catch (SQLException ex) {
+           System.out.print(ex.getMessage());
+        }
+     }

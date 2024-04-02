@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="258455a5-5f87-44ec-aed0-faf696302bd5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="202"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     tbl_productos.`idProcucto` AS tbl_productos_idProcucto,
+     tbl_productos.`descripcion` AS tbl_productos_descripcion,
+     tbl_productos.`utilidad` AS tbl_productos_utilidad,
+     tbl_productos.`costo` AS tbl_productos_costo
+FROM
+     `tbl_productos` tbl_productos]]>
+	</queryString>
+	<field name="tbl_productos_idProcucto" class="java.lang.Integer"/>
+	<field name="tbl_productos_descripcion" class="java.lang.String"/>
+	<field name="tbl_productos_utilidad" class="java.lang.Double"/>
+	<field name="tbl_productos_costo" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="23" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="331" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="0" y="11" width="343" height="238" uuid="6be083c1-af36-4b82-bde1-56c1a3bf242a"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{tbl_productos_descripcion}]]></keyExpression>
+					<valueExpression><![CDATA[$F{tbl_productos_utilidad}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot labelFormat="{1}({2})">
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>
